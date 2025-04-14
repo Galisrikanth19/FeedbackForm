@@ -4,13 +4,6 @@
 
 import SwiftUI
 
-struct FeedbackOption: Identifiable {
-    let id = UUID()
-    let icon: String
-    var isSelected: Bool = false
-    var color: Color = .clear
-}
-
 struct FeedbackView: View {
     @State private var feedbackOptions = [
         FeedbackOption(icon: "Awful", color: .red),
@@ -46,28 +39,28 @@ struct FeedbackView: View {
     }
     
     @ViewBuilder
-    private func feedbackButton(for fead: FeedbackOption) -> some View {
+    private func feedbackButton(for feed: FeedbackOption) -> some View {
         HStack {
-            Image(fead.icon)
+            Image(feed.icon)
                 .renderingMode(.template)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 25, height: 25)
-                .foregroundStyle(fead.color)
+                .foregroundStyle(feed.color)
             
-            Text(fead.icon)
+            Text(feed.icon)
         }
         .padding(.horizontal)
         .frame(height: 54)
         .overlay {
             Capsule()
                 .stroke(lineWidth: 1.5)
-                .foregroundStyle(fead.id == selectedOption ? Color.primary : .clear)
+                .foregroundStyle(feed.id == selectedOption ? Color.primary : .clear)
         }
-        .background(fead.color.opacity(0.15), in: Capsule())
+        .background(feed.color.opacity(0.15), in: Capsule())
         .animation(.linear, value: selectedOption)
         .onTapGesture {
-            selectedOption = (selectedOption == fead.id) ? nil : fead.id
+            selectedOption = (selectedOption == feed.id) ? nil : feed.id
         }
     }
 }

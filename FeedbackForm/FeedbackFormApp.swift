@@ -1,9 +1,6 @@
 //
 //  FeedbackFormApp.swift
-//  FeedbackForm
-//
 //  Created by GaliSrikanth on 11/04/25.
-//
 
 import SwiftUI
 
@@ -11,8 +8,7 @@ import SwiftUI
 struct FeedbackFormApp: App {
     var body: some Scene {
         WindowGroup {
-            //FeedbackTow()
-            FeedbackView()
+            DashboardView()
         }
     }
 }
